@@ -1,8 +1,14 @@
 import { JSX } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ProfilePage from "../pages/ProfilePage";
+// import ProfilePage from "../pages/ProfilePage";
 import Layout from "../pages/Layout";
 import Pricing from "../pages/Pricing";
+import Promotion from "../pages/Promotion";
+
+import Branch from "../pages/Branch";
+import HomePage from "../pages/Homepage";
+import WorkoutPlanPage from "../pages/Workoutplan";
+
 
 export interface AppRoute {
   path?: string;
@@ -14,6 +20,8 @@ export interface AppRoute {
 export const webRoutes = {
   home: "/",
   pricing: "/Pricing",
+  promotion: "/promotion",
+  workoutplan:"/workoutplan"
   // discover: "/discover",
 };
 
@@ -32,13 +40,15 @@ const appRoutes: AppRoute[] = [
       { path: webRoutes.pricing, element: <Pricing /> },
 
 
+      { path: webRoutes.promotion, element: <Promotion /> },
+      { path: webRoutes.workoutplan, element: <WorkoutPlanPage /> },
       // { path: webRoutes.discover, element: <DiscoverPage /> },
     ],
   },
   {
-    path: "*",
-    element: <div>NotFoundPage</div>,
-    errorElement: errorElement,
+    path: "branch",
+    element: <Branch />,
+    errorElement: errorElement, 
   },
 ];
 const router = createBrowserRouter(appRoutes);
