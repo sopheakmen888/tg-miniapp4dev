@@ -2,6 +2,7 @@ import { JSX } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import ProfilePage from "../pages/ProfilePage";
 import Layout from "../pages/Layout";
+import MembershipPlan from "../pages/membershipPlan";
 
 export interface AppRoute {
   path?: string;
@@ -12,6 +13,7 @@ export interface AppRoute {
 
 export const webRoutes = {
   home: "/",
+  membership: "/membership"
   // discover: "/discover",
 };
 
@@ -27,6 +29,7 @@ const appRoutes: AppRoute[] = [
     element: <Layout />,
     children: [
       { path: webRoutes.home, element: <ProfilePage /> },
+      { path: webRoutes.membership, element: <MembershipPlan /> },
       // { path: webRoutes.discover, element: <DiscoverPage /> },
     ],
   },
