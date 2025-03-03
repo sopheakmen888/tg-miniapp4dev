@@ -16,7 +16,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Information */}
-      <div className="relative z-10 grid md:grid-cols-3 gap-6 mt-8 p-6 w-full max-w-4xl">
+      <div className="relative z-10 grid md:grid-cols-3 gap-6 mt-2 p-6 w-full max-w-4xl">
         {/* Address */}
         <div className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg">
           <FaMapMarkerAlt className="text-green-500 text-4xl mb-3" />
