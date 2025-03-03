@@ -38,7 +38,7 @@ const workouts = [
 
 const WorkoutPlan: React.FC = () => {
     return (
-      <div className="relative  bg-gray-100 font-sans">
+      <div className="relative  bg-white font-sans">
         {/* Header */}
         <h2 className="text-center text-xl font-bold text-black mt-4">Workout Plan</h2>
   
