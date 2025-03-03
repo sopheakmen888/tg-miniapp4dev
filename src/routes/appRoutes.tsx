@@ -2,8 +2,11 @@ import { JSX } from "react";
 import { createBrowserRouter } from "react-router-dom";
 // import ProfilePage from "../pages/ProfilePage";
 import Layout from "../pages/Layout";
+
+import Branch from "../pages/Branch";
 import HomePage from "../pages/Homepage";
 import WorkoutPlanPage from "../pages/Workoutplan";
+
 
 export interface AppRoute {
   path?: string;
@@ -36,9 +39,9 @@ const appRoutes: AppRoute[] = [
     ],
   },
   {
-    path: "*",
-    element: <div>NotFoundPage</div>,
-    errorElement: errorElement,
+    path: "branch",
+    element: <Branch />,
+    errorElement: errorElement, 
   },
 ];
 
