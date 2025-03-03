@@ -1,8 +1,30 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 const ProfilePage = () => {
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const initData = useSelector((state: RootState) => state.auth.initData);
+  const token = useSelector((state: RootState) => state.auth.token);
+
+  console.log("Profile Page");
+  console.log("token:", token);
+
   useEffect(() => {
     window.Telegram.WebApp.expand();
+
+    const loadData = async () => {
+      const response = await fetch(`http://localhost:3001/api/auth/get-data`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      });
+      console.log("response: ", await response.json());
+    };
+
+    loadData();
   }, []);
 
   const renderUserInfo = () => {
