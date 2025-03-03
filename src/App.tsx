@@ -49,7 +49,6 @@ function App() {
       console.error("Telegram WebApp not available.");
     }
   };
-
   return (
     <>
       <RouterProvider router={appRouter} />
