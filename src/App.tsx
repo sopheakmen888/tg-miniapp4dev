@@ -3,8 +3,14 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import appRouter from "./routes/appRoutes";
 import api from "./service/api";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthData } from "./store/slices/authSlice";
+import { RootState } from "./store/store";
 
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state: RootState) => state.auth.token);
+
   const MODE = import.meta.env.MODE;
   console.log(MODE);
   const isDev = MODE === "development";
@@ -26,33 +32,32 @@ function App() {
 
   useEffect(() => {
     const login = async () => {
-      await handleSendRequest();
-    };
-    login();
-  }, []);
-
-  const handleSendRequest = async () => {
-    if (window.Telegram?.WebApp) {
       try {
-        await api
-          .signin({ initData, userInfo })
-          .then((data) => {
-            console.log("Backend response:", data);
+        const response = (await api.signin({ initData, userInfo })) as {
+          message: string;
+          token: string;
+        };
+        console.log("Backend response:", response);
+
+        dispatch(
+          setAuthData({
+            initData: initData ?? "",
+            userInfo,
+            token: response.token,
           })
-          .catch((error) => {
-            console.log(error);
-          });
+        );
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Login Error:", error);
       }
-    } else {
-      console.error("Telegram WebApp not available.");
-    }
-  };
+    };
+
+    login();
+  }, [dispatch]);
 
   return (
     <>
-      <RouterProvider router={appRouter} />
+      {token && <RouterProvider router={appRouter} />}
+      {!token && <div>Loading...</div>}
     </>
   );
 }
