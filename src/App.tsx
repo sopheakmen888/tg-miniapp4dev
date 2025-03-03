@@ -3,7 +3,6 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import appRouter from "./routes/appRoutes";
 import api from "./service/api";
-
 function App() {
   const MODE = import.meta.env.MODE;
   console.log(MODE);
@@ -53,6 +52,7 @@ function App() {
   return (
     <>
       <RouterProvider router={appRouter} />
+
     </>
   );
 }
