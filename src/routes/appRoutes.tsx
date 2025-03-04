@@ -17,8 +17,6 @@ export const webRoutes = {
   home: "/",
   workoutPlanPage: "/workout-plan",
   coupon: "/coupon",
-
-
   Membership_plan: "/membership"
   // discover: "/discover",
 };
