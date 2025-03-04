@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-white bg-white">
       {/* Background Image */}
-      <div className="  bg-center bg-[url('/your-image.jpg')] bg-cover bg-black">
+      <div className="  bg-center bg-black">
 
       {/* Overlay Content */}
       <div className="relative z-10 text-center p-8">
