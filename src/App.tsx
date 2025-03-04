@@ -33,17 +33,26 @@ function App() {
   useEffect(() => {
     const login = async () => {
       try {
-        const response = (await api.signin({ initData, userInfo })) as {
-          message: string;
-          token: string;
-        };
-        console.log("Backend response:", response);
+        //     const response = (await api.signin({ initData, userInfo })) as {
+        //       message: string;
+        //       token: string;
+        //     };
+        //     console.log("Backend response:", response);
+
+        //     dispatch(
+        //       setAuthData({
+        //         initData: initData ?? "",
+        //         userInfo,
+        //         token: response.token,
+        //       })
+        //     );
 
         dispatch(
           setAuthData({
             initData: initData ?? "",
             userInfo,
-            token: response.token,
+            token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJyb2xlIjoibWVtYmVyIiwiaWF0IjoxNzQxMDUyMDAzLCJleHAiOjE3NzI1ODgwMDN9.hHkgh2Bgo5piXKf2oTUggMNVnOGCRAzQcIh2ml3Yi2U",
           })
         );
       } catch (error) {
@@ -56,6 +65,7 @@ function App() {
 
   return (
     <>
+    
       {token && <RouterProvider router={appRouter} />}
       {!token && <div>Loading...</div>}
     </>
